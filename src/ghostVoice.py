@@ -44,7 +44,8 @@ def main():
 #        aiy.audio.say('Hello')
         while True:
             os.system('aplay soloKnocks.wav')
-            if ser.read(1) = '!':
+            reading = ser.read(1)
+            if reading = '!':
                 break
 #        ser.write(b'?')
         print('Listening...')
