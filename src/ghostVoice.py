@@ -30,26 +30,26 @@ ser = serial.Serial('/dev/ttyACM0',9600)
 
 def main():
     recognizer = aiy.cloudspeech.get_recognizer()
-#    recognizer.expect_phrase('turn off the light')
-#    recognizer.expect_phrase('turn on the light')
-#    recognizer.expect_phrase('blink')
     recognizer.expect_phrase('Fortune')
     recognizer.expect_phrase('future')
     recognizer.expect_phrase('life')
-#    aiy.audio.play_audio('knocks.wav')
+
     os.system('aplay soloKnocks.wav')
     button = aiy.voicehat.get_button()
     led = aiy.voicehat.get_led()
     aiy.audio.get_recorder().start()
 
     while True:
-        print('Press the button and speak')
+        print('ready for knock')
 #        aiy.audio.say('Hello')
-        reading = ser.read(1)
+        while True:
+            os.system('aplay soloKnocks.wav')
+            if ser.read(1) = '!':
+                break
 #        ser.write(b'?')
-#        button.wait_for_press()
         print('Listening...')
         aiy.audio.say('ask me for your future')
+
         text = recognizer.recognize()
         if text is None:
             aiy.audio.say('please speak')
