@@ -45,7 +45,7 @@ def main():
         while True:
             os.system('aplay soloKnocks.wav')
             reading = ser.read(1)
-            if reading = '!':
+            if reading == '!':
                 break
 #        ser.write(b'?')
         print('Listening...')
