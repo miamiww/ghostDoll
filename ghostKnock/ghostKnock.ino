@@ -19,21 +19,23 @@ void setup(){
 
 void loop(){
   val = analogRead(knockSensor);
+  
   if( val >= THRESHOLD){
-    Serial.print("!");
-  }
-  delay(100);
-  if(Serial.available()){
-    for(pos = 0; pos < 180; pos += 1){
-      panelServo.write(pos);
-      delay(15);
-    }
+    pos = 90;
     statePin = HIGH;
     digitalWrite(ledPin, statePin);
-  } else{
-    for(pos = 180; pos >= 1; pos-=1){
-      panelServo.write(pos);
-      delay(15);
-    }
+    Serial.print("!");
+    panelServo.write(pos);
+    delay(45);
   }
+  
+  delay(100);
+  if(Serial.available()){
+    int readByte = Serial.read();
+    pos = 120;
+    panelServo.write(pos);
+    delay(45);
+    statePin = LOW;
+    digitalWrite(ledPin, statePin);
+  } 
 }
