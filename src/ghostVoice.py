@@ -31,6 +31,7 @@ ser = serial.Serial('/dev/ttyACM0',9600)
 def main():
     recognizer = aiy.cloudspeech.get_recognizer()
     recognizer.expect_phrase('Fortune')
+    recognizer.expect_phrase('hello')
     recognizer.expect_phrase('future')
     recognizer.expect_phrase('life')
 
@@ -42,12 +43,13 @@ def main():
     while True:
         print('ready for knock')
 #        aiy.audio.say('Hello')
-        while True:
-            os.system('aplay soloKnocks.wav')
-            reading = ser.read(1)
-            if reading == '!':
-                break
+#        while True:
+#            os.system('aplay soloKnocks.wav')
+#            reading = ser.read(1)
+#            if reading == '!':
+#                break
 #        ser.write(b'?')
+        reading = ser.read(1)
         print('Listening...')
         aiy.audio.say('ask me for your future')
 
@@ -69,6 +71,9 @@ def main():
                 ser.write(b'?')
             elif 'Fortune' in text:
                 aiy.audio.say('beware your family')
+                ser.write(b'?')
+            elif 'hello' in text:
+                aiy.audio.say('hello')
                 ser.write(b'?')
             elif 'goodbye' in text:
                 break
