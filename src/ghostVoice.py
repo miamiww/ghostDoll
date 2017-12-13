@@ -23,7 +23,8 @@ import serial
 import os
 import threading
 
-fortunes = ['you will not  make it home in time','your death will be painful and in your final moments you will know that you deserved it' ,'you will die tomorrow','stop sleeping or it will find you','be careful when walking, perhaps avoid walking altogether','your right index finger will be cut off at the second knuckle two months and two days from today','you will live to a contented old age but no one will remember you within ten years of your passing' ]
+fortunes = ['in three days you will be walking down a dark hallway and stub your toe','serious trouble will find you','a family member will betray you','you will not  make it home in time','in your final moments you will know that you deserved it' ,'you will die tomorrow','bad things will happen to you when walking. be careful when walking, perhaps avoid walking altogether','your right index finger will be cut off at the second knuckle two months and two days from today','you will live to a contented old age', 'you will have an unfortunate accident when shaking the hand of a stranger', 'your next flight will be your last', '' ]
+chitChat = ['that was my name when I was living']
 ser = serial.Serial('/dev/ttyACM0',9600)
 
 
@@ -34,6 +35,9 @@ def main():
     recognizer.expect_phrase('hello')
     recognizer.expect_phrase('future')
     recognizer.expect_phrase('life')
+    recognizer.expect_phrase('Sophia')
+    recognizer.expect_phrase('tell me my fortune')
+    recognizer.expect_phrase('close the panel')
 
     os.system('aplay soloKnocks.wav')
     button = aiy.voicehat.get_button()
@@ -65,19 +69,26 @@ def main():
                 ser.write(b'?')
             elif 'turn off the light' in text:
                 led.set_state(aiy.voicehat.LED.OFF)
+                ser.write(?'b')
 #            elif 'blink' in text:
 #                led.set_state(aiy.voicehat.LED.BLINK)
+            elif 'hello' in text:
+                aiy.audio.say('hello')
+                ser.write(b'?')
             elif 'future' in text:
                 aiy.audio.say(random.choice(fortunes))
                 ser.write(b'?')
-            elif 'Fortune' in text:
-                aiy.audio.say('beware your family')
+            elif 'my fortune' in text:
+                aiy.audio.say(random.choice(fortunes))
                 ser.write(b'?')
             elif '4chan' in text:
                 aiy.audio.say(random.choice(fortunes))
                 ser.write(b'?')
-            elif 'hello' in text:
-                aiy.audio.say('hello')
+            elif 'Sophia' in text:
+                aiy.audio.say(random.choice(chitChat))
+                ser.write(b'?')
+            elif 'close the panel' in text:
+                aiy.audio.say('okay')
                 ser.write(b'?')
 #            elif 'goodbye' in text:
 #                break
