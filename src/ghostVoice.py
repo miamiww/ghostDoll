@@ -57,6 +57,7 @@ def main():
         if text is None:
             aiy.audio.say('please speak')
             print('Sorry, I did not hear you.')
+            ser.write(b'?')
         else:
             print('You said "', text, '"')
             if 'turn on the light' in text:
@@ -72,11 +73,16 @@ def main():
             elif 'Fortune' in text:
                 aiy.audio.say('beware your family')
                 ser.write(b'?')
+            elif '4chan' in text:
+                aiy.audio.say(random.choice(fortunes))
+                ser.write(b'?')
             elif 'hello' in text:
                 aiy.audio.say('hello')
                 ser.write(b'?')
-            elif 'goodbye' in text:
-                break
+#            elif 'goodbye' in text:
+#                break
+            else:
+                ser.write(b'?')
 
 
 if __name__ == '__main__':
