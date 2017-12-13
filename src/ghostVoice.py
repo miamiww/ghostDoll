@@ -69,7 +69,7 @@ def main():
                 ser.write(b'?')
             elif 'turn off the light' in text:
                 led.set_state(aiy.voicehat.LED.OFF)
-                ser.write(?'b')
+                ser.write(b'?')
 #            elif 'blink' in text:
 #                led.set_state(aiy.voicehat.LED.BLINK)
             elif 'hello' in text:
