@@ -18,7 +18,8 @@ void setup(){
 }
 
 void loop(){
-  val=analogRead(knockPin);
+
+ val=analogRead(knockPin);
   
  if( val >= THRESHOLD){
    pos = 10;
@@ -28,16 +29,17 @@ void loop(){
    Serial.print("!");
    digitalWrite(ledPin, statePin);
  }
- delay(100);
+ delay(50);
  if(Serial.available()){
+   int readByte = Serial.read();
    pos = 140;
    panelServo.write(pos);
    delay(30);
    statePin = LOW;
-   int readByte = Serial.read();
    digitalWrite(ledPin, statePin);
    
  }
+ delay(50);
 
 }
 
