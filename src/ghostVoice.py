@@ -62,11 +62,13 @@ def main():
             aiy.audio.say('please speak')
             print('Sorry, I did not hear you.')
             ser.write(b'?')
+            ser.flush()
         else:
             print('You said "', text, '"')
             if 'turn on the light' in text:
                 led.set_state(aiy.voicehat.LED.ON)
                 ser.write(b'?')
+                ser.flush()
             elif 'turn off the light' in text:
                 led.set_state(aiy.voicehat.LED.OFF)
                 ser.write(b'?')
@@ -75,25 +77,32 @@ def main():
             elif 'hello' in text:
                 aiy.audio.say('hello')
                 ser.write(b'?')
+                ser.flush()
             elif 'future' in text:
                 aiy.audio.say(random.choice(fortunes))
                 ser.write(b'?')
+                ser.flush()
             elif 'my fortune' in text:
                 aiy.audio.say(random.choice(fortunes))
                 ser.write(b'?')
+                ser.flush()
             elif '4chan' in text:
                 aiy.audio.say(random.choice(fortunes))
                 ser.write(b'?')
+                ser.flush()
             elif 'Sophia' in text:
                 aiy.audio.say(random.choice(chitChat))
                 ser.write(b'?')
+                ser.flush()
             elif 'close the panel' in text:
                 aiy.audio.say('okay')
                 ser.write(b'?')
+                ser.flush()
 #            elif 'goodbye' in text:
 #                break
             else:
                 ser.write(b'?')
+                ser.flush()
 
 
 if __name__ == '__main__':
