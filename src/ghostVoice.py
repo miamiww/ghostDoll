@@ -23,7 +23,8 @@ import serial
 import os
 import threading
 
-fortunes = ['in three days you will be walking down a dark hallway and stub your toe','serious trouble will find you','a family member will betray you','you will not  make it home in time','in your final moments you will know that you deserved it' ,'you will die tomorrow','bad things will happen to you when walking. be careful when walking, perhaps avoid walking altogether','your right index finger will be cut off at the second knuckle two months and two days from today','you will live to a contented old age', 'you will have an unfortunate accident when shaking the hand of a stranger', 'your next flight will be your last', '' ]
+fortunes = ['there are no weddings in your future','you will burn your mouth on a bowl of soup within the next 728 hours','your next job will be your last. maybe wait a while in the job you have now','on January 19th, 2018 you will mysteriously lose consciousness. this will be the first of what will become a regular occurence','I do not see anything interesting in your future. guess you must be pretty boring','in three days you will be walking down a dark hallway and stub your toe','serious trouble will find you','a family member will betray you','you will not  make it home in time','in your final moments you will know that you deserved it' ,'you will die tomorrow','bad things will happen to you when walking. be careful when walking, perhaps avoid walking altogether','your right index finger will be cut off at the second knuckle two months and two days from today','you will live to a contented old age', 'you will have an unfortunate accident when shaking the hand of a stranger' ]
+fortunes.append('your next flight will be your last')
 chitChat = ['that was my name when I was living']
 ser = serial.Serial('/dev/ttyACM0',9600)
 
