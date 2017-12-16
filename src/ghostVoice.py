@@ -38,6 +38,7 @@ def main():
     recognizer.expect_phrase('Sophia')
     recognizer.expect_phrase('tell me my fortune')
     recognizer.expect_phrase('close the panel')
+    recognizer.expect_phrase('will I')
 
     os.system('aplay soloKnocks.wav')
     button = aiy.voicehat.get_button()
@@ -98,6 +99,10 @@ def main():
                 aiy.audio.say('okay')
                 ser.write(b'?')
                 ser.flush()
+            elif 'will I' in text:
+                aiy.audio.say('no')
+                ser.write(b'?')
+                ser.flush
 #            elif 'goodbye' in text:
 #                break
             else:
