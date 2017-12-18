@@ -40,6 +40,7 @@ def main():
     recognizer.expect_phrase('tell me my fortune')
     recognizer.expect_phrase('close the panel')
     recognizer.expect_phrase('go away')
+    recognizer.expect_phrase('when')
     recognizer.expect_phrase('will I')
 
     os.system('aplay soloKnocks.wav')
@@ -85,6 +86,9 @@ def main():
                 aiy.audio.say(random.choice(fortunes))
                 ser.write(b'?')
                 ser.flush()
+            elif 'when' in text:
+                aiy.audio.say('tomorrow')
+                ser.write(b'?')
             elif 'my fortune' in text:
                 aiy.audio.say(random.choice(fortunes))
                 ser.write(b'?')
