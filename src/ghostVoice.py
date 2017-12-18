@@ -41,6 +41,7 @@ def main():
     recognizer.expect_phrase('close the panel')
     recognizer.expect_phrase('go away')
     recognizer.expect_phrase('when')
+    recognizer.expect_phrase('how many')
     recognizer.expect_phrase('will I')
 
     os.system('aplay soloKnocks.wav')
@@ -109,6 +110,10 @@ def main():
                 aiy.audio.say('no')
                 ser.write(b'?')
                 ser.flush()
+            elif 'how many' in text:
+                aiy.audio.say('zero')
+                ser.write(b'?')
+                ser.flush
 #            elif 'goodbye' in text:
 #                break
             elif 'go away' in text:
