@@ -44,6 +44,7 @@ def main():
     recognizer.expect_phrase('how many')
     recognizer.expect_phrase('will I')
 
+
     os.system('aplay soloKnocks.wav')
     button = aiy.voicehat.get_button()
     led = aiy.voicehat.get_led()
@@ -120,6 +121,7 @@ def main():
                 ser.write(b'?')
                 ser.flush()
             else:
+                aiy.audio.say('you do not want to know')
                 ser.write(b'?')
                 ser.flush()
 
